@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet author="Rahul" id="createTables" context="tables">
+        <!-- Create the 'state' table -->
+        <createTable tableName="state">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="state_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="Rahul" id="createDistrictTable" context="tables">
+        <!-- Create the 'district' table -->
+        <createTable tableName="district">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="district_name" type="VARCHAR(255)"/>
+            <column name="state_id" type="BIGINT"/>
+        </createTable>
+        
+        <!-- Add foreign key constraint -->
+        <addForeignKeyConstraint baseTableName="district" baseColumnNames="state_id"
+                                 constraintName="fk_district_state"
+                                 referencedTableName="state" referencedColumnNames="id"/>
+    </changeSet>
+    
+    
+    
+    
+               <changeSet author="Rahul" id="loadData" context="data">
+        <!-- Load data into 'state' table -->
+        <loadData file="state.csv" separator="," tableName="state">
+            <column name="id" type="NUMERIC" />
+            <column name="state_name" type="STRING"/>
+        </loadData>
+        
+        <!-- Load data into 'district' table -->
+        <loadData file="district.csv" separator="," tableName="district">
+            <column name="id" type="NUMERIC" />
+            <column name="district_name" type="STRING"/>
+            <column name="state_id" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
