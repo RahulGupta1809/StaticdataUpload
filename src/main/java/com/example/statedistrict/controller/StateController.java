@@ -14,7 +14,6 @@ import com.example.statedistrict.model.State;
 import com.example.statedistrict.service.DistrictService;
 import com.example.statedistrict.service.StateService;
 
-
 @RestController
 @RequestMapping("/api/states")
 
@@ -46,3 +45,4 @@ public class StateController {
     }
 }
 	
+
