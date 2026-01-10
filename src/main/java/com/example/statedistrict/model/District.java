@@ -38,6 +38,4 @@ public class District {
 	public void setDistrictName(String districtName) {
 		this.districtName = districtName;
 	}
-
-    
 }
