@@ -1,7 +1,5 @@
 package com.example.statedistrict.model;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,10 +57,4 @@ public class State {
 	public void setDistricts(List<District> districts) {
 		this.districts = districts;
 	}
-
-	
-
-    
-
 }
-    // Constructors, getters, setters, etc.
